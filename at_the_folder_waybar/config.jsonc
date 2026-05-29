@@ -1,0 +1,87 @@
+{
+	"layer": "top",
+	"modules-left": [
+        "custom/launcher",
+        "clock",
+        "cpu",
+        "memory",
+        "mpris"
+    ],
+	"modules-center": [
+        "hyprland/workspaces"
+    ],
+	"modules-right": [
+        "backlight",
+        "pulseaudio",
+        "network", 
+        "battery",
+        "custom/wall"
+    ],
+
+    "mpris": {
+        "format": " {title} - {artist}",
+        "format-paused": " {title} - {artist}",
+        "tooltip": true,
+        "tooltip-format": "{player}\n{artist} - {album}",
+        "max-length": 40
+    },
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon}   {volume}%",
+		"format-muted": "{icon}   {volume}%",
+		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+	"network": {
+		"tooltip": false,
+		"format-wifi": "   {essid} {signalStrength}%",
+		"format-ethernet": "   Ethernet"
+	},
+	"backlight": {
+		"tooltip": false,
+		"format": " {}%",
+		"interval":1,
+        "on-scroll-up": "light -A 5",
+		"on-scroll-down": "light -U 5"
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "interval": 60,
+        "format": "  {:%H:%M}",
+        "tooltip-format": "  {:%A, %d %B %Y}",
+        "tooltip": true
+    },
+    "cpu": {
+        "interval": 15,
+        "format": "  {usage}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": "  {used} GiB",
+        "max-length": 10
+    },
+    "custom/launcher":{
+        "format": " ",
+        "on-click": "wofi --show drun --width 40% --height 20%",
+        "on-click-right": "killall wofi"
+    },
+    "custom/wall":{
+        "format": " ",
+        "on-click": "zsh ~/.config/waybar/scripts/wallchange.sh",
+    },
+}
