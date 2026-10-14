@@ -1,0 +1,7 @@
+*.efi
+*.log*
+*.bak
+vars/
+keys/
+Bootloader/refind/
+Bootloader/install_refind.py
